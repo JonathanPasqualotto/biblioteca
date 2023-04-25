@@ -1,4 +1,3 @@
-import './App.css';
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
 import Menu from './componentes/Menu';
 
