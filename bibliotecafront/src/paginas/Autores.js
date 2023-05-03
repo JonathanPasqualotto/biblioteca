@@ -1,44 +1,43 @@
+import { useEffect, useState } from "react";
 import CabecalhoListagem from "../componentes/CabecalhoListagem";
-import { Table } from "react-bootstrap";
-
+import { Button, Table } from "react-bootstrap";
+import axios from "axios"
+import { Link } from "react-router-dom";
 
 export default function Autores(){
+
+    const [dados, setDados] = useState([])
+
+    useEffect(()=> {
+        axios.get('http://localhost:4000/autor')
+            .then(resposta => setDados(resposta.data))
+            .catch(erro => console.log(erro))
+    }, [])
+
     return(
         <>
             <CabecalhoListagem titulo="Cadastro de autores" 
-            descricao="Gerencie a lista de autores dos livros neste local"/>
-
+            descricao="Gerencie a lista de autores dos livros neste local"
+            rota="/autor" />
 
             <Table striped="columns">
                 <thead>
                     <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
+                        <th>#</th>
+                        <th>Autor</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    </tr>
-                    <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <td>3</td>
-                    <td colSpan={2}>Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
+                    {dados.map((d, i)=>(
+                        <tr key={i}>
+                            <td>
+                                <Button as={Link} to={`/autor/${d.idautor}`}>Ver</Button>    
+                            </td>
+                            <td>{d.autor}</td>
+                        </tr>
+                    ))}
                 </tbody>
-                </Table>
-
+            </Table>
         </>
     )
 }

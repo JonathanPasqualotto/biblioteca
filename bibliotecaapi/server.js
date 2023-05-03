@@ -9,12 +9,15 @@ import Livro from "./src/controllers/Livro.js"
 import LivroAutor from "./src/controllers/LivroAutor.js"
 import Emprestimo from "./src/controllers/Emprestimo.js"
 import Usuario from "./src/controllers/Usuario.js"
+import cors from 'cors'
 
 var jsonParser = bodyParser.json()
 
 banco.authenticate()        // INICIA A AUTENTICAÇÃO
 
 const app = express() 
+
+app.use(cors())
 
 app.use(express.json())         // PARA USAR O JSON
 

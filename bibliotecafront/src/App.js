@@ -18,7 +18,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />}/>  
             <Route path='/autores' element={<Autores />}/>
-            <Route path='//autor' element={<AutorCad />}/>
+            <Route path='/autor/:id' element={<AutorCad />}/>
+            <Route path='/autor' element={<AutorCad />}/>
             <Route path='*' element={<Home />}/>  
           </Routes>
 
