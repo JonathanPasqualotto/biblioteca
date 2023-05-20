@@ -1,7 +1,7 @@
 export default function CabecalhoCadastro(props){
-    return(
+    return (
         <>
-            <h1>{props.titulo}</h1>
+            <h1>{ (props.id) ? 'Alterando ' : 'Adicionando ' } {props.titulo}</h1>
         </>
-    )
+    );
 }

@@ -13,20 +13,20 @@ export default function Menu () {
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/emprestimos">Empréstimos</Nav.Link>
                         <NavDropdown title="Cadastros" id="basic-nav-dropdown">
-                        <NavDropdown.Item as={Link} to="/pessoas">Pessoas</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item as={Link} to="/livros">Livros</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item as={Link} to="/categorias">Categorias</NavDropdown.Item>
-                        <NavDropdown.Item as={Link} to="/editoras">Editoras</NavDropdown.Item>
-                        <NavDropdown.Item as={Link} to="/autores">Autores</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item as={Link} to="/usuarios">Usuários</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/pessoas">Pessoas</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item as={Link} to="/livros">Livros</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item as={Link} to="/autores">Autores</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/categorias">Categorias</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/editoras">Editoras</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item as={Link} to="/usuarios">Usuários</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>
-                </Navbar>
+            </Navbar>
         </>
     );
 }

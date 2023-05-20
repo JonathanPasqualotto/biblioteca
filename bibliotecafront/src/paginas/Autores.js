@@ -1,26 +1,28 @@
-import { useEffect, useState } from "react";
 import CabecalhoListagem from "../componentes/CabecalhoListagem";
-import { Button, Table } from "react-bootstrap";
-import axios from "axios"
+import { Button, Table } from 'react-bootstrap';
+import { useEffect, useState } from "react";
+import { getAutores } from "../servico/api";
 import { Link } from "react-router-dom";
 
 export default function Autores(){
+    const [dados, setDados] = useState([]);
 
-    const [dados, setDados] = useState([])
+    useEffect(()=>{         // EXECUTA QUANDO ENTRA NA PAGINA
+        const carregarDados = async () => {
+            let resposta = await getAutores()
+            setDados(resposta)
+        }
 
-    useEffect(()=> {
-        axios.get('http://localhost:4000/autor')
-            .then(resposta => setDados(resposta.data))
-            .catch(erro => console.log(erro))
-    }, [])
+        carregarDados()
+    }, []);
 
-    return(
+    return (
         <>
             <CabecalhoListagem titulo="Cadastro de autores" 
-            descricao="Gerencie a lista de autores dos livros neste local"
-            rota="/autor" />
+             descricao="Gerencie a lista de autores dos livros neste local."
+             rota="/autor"/>
 
-            <Table striped="columns">
+            <Table striped>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -31,13 +33,14 @@ export default function Autores(){
                     {dados.map((d, i)=>(
                         <tr key={i}>
                             <td>
-                                <Button as={Link} to={`/autor/${d.idautor}`}>Ver</Button>    
+                                <Button as={Link} to={`/autor/${d.idautor}`}>Ver</Button>
                             </td>
                             <td>{d.autor}</td>
                         </tr>
                     ))}
+                    
                 </tbody>
-            </Table>
+                </Table>
         </>
-    )
+    );
 }
