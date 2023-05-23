@@ -2,7 +2,7 @@ import CabecalhoCadastro from "../componentes/CabecalhoCadastro";
 import { Form, Button } from 'react-bootstrap';
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { alterarCategoria, excluirCategoria, getCategoria, inserirCategoria } from "../servico/api";
 
 export default function AutorCad(){
     //Declarando uma variável para utilizar o redirecionamento de tela
@@ -15,43 +15,43 @@ export default function AutorCad(){
     const [categoria, setCategoria] = useState('');
 
     useEffect(()=>{
+        const selecionar = async () => {
+            let resposta = await getCategoria(id)
+            setCategoria(resposta.categoria)
+        }
+
         if (id){
-            axios.get(`http://localhost:4000/categoria/${id}`)
-            .then(resposta => setCategoria(resposta.data.categoria))
-            .catch(erro => console.log(erro));
+            selecionar()
         }
     }, [id]);
 
     const cancelar = () => {
-        navigate('/categorias');
+        voltar();
     }
 
-    const salvar = () => {
-        let json = {
-            "categoria": categoria
-        };
+    const voltar = () => {
+        navigate('/categorias')
+    }
+
+    const salvar = async () => {
 
         if (id){
             //Put - Alterar
-            axios.put(`http://localhost:4000/categoria/${id}`, json)
-            .then( navigate('/categorias') )
-            .catch(erro => console.log(erro));
+            await alterarCategoria(id, categoria)
         }
         else {
             //Post - Inserir
-            axios.post(`http://localhost:4000/categoria`, json)
-            .then( navigate('/categorias') )
-            .catch(erro => console.log(erro));
+            await inserirCategoria(categoria)
         }
+
+        voltar()
     }
 
-    const excluir = () => {
+    const excluir = async () => {
         if (! window.confirm('Deseja excluir o registro agora?'))
             return;
-
-        axios.delete(`http://localhost:4000/categoria/${id}`)
-            .then( navigate('/categorias') )
-            .catch(erro => console.log(erro));
+            await excluirCategoria(id)
+            voltar()
     }
 
     return (

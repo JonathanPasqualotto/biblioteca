@@ -65,3 +65,131 @@ export const alterarAutor = async (id,autor) => {
     const dados = await requisicaoPut(`autor/${id}`, json)
     return dados
 }
+
+
+//  Categorias
+
+export const getCategorias = async () => {
+    const dados = await requisicaoGet('categoria')
+    return dados
+}
+
+
+export const getCategoria = async (id) => {
+    const dados = await requisicaoGet(`categoria/${id}`)
+    return dados
+}
+
+export const excluirCategoria = async (id) => {
+    const dados = await requisicaoDelete(`categoria/${id}`)
+    return dados
+}
+
+export const inserirCategoria = async (categoria) => {
+    let json = {
+        "categoria": categoria                      
+    }
+
+    const dados = await requisicaoPost('categoria', json)
+    return dados
+}
+
+export const alterarCategoria = async (id,categoria) => {
+    let json = {
+        categoria                   
+    }
+
+    const dados = await requisicaoPut(`categoria/${id}`, json)
+    return dados
+}
+
+// Pessoas
+
+export const getPessoas = async () => {
+    const dados = await requisicaoGet('pessoa')
+    return dados
+}
+
+
+export const getPessoa = async (id) => {
+    const dados = await requisicaoGet(`pessoa/${id}`)
+    return dados
+}
+
+export const excluirPessoa = async (id) => {
+    const dados = await requisicaoDelete(`pessoa/${id}`)
+    return dados
+}
+
+export const inserirPessoa = async (pessoa, email, telefone) => {
+    let json = {
+        pessoa,
+        email,
+        telefone,                      
+    }
+
+    const dados = await requisicaoPost('pessoa', json)
+    return dados
+}
+
+export const alterarPessoa = async (id, pessoa, email, telefone) => {
+    let json = {
+        pessoa,
+        email,
+        telefone                   
+    }
+
+    const dados = await requisicaoPut(`pessoa/${id}`, json)
+    return dados
+}
+
+
+// Livros
+
+export const getLivros = async () => {
+    const dados = await requisicaoGet('livro')
+    return dados
+}
+
+
+export const getLivro = async (id) => {
+    const dados = await requisicaoGet(`livro/${id}`)
+    return dados
+}
+
+export const excluirLivro = async (id) => {
+    const dados = await requisicaoDelete(`livro/${id}`)
+    return dados
+}
+
+export const inserirLivro = async (titulo,ano,paginas,edicao,resuno,emprestado,idcategoria,ideditora) => {
+    let json = {
+        titulo,
+        ano,
+        paginas,
+        edicao,
+        resuno,
+        emprestado,
+        idcategoria,
+        ideditora                      
+    }
+
+    const dados = await requisicaoPost('livro', json)
+    return dados
+}
+
+export const alterarLivro = async (id,titulo,ano,paginas,edicao,resuno,emprestado,idcategoria,ideditora) => {
+    let json = {
+        titulo,
+        ano,
+        paginas,
+        edicao,
+        resuno,
+        emprestado,
+        idcategoria,
+        ideditora                   
+    }
+
+    const dados = await requisicaoPut(`livro/${id}`, json)
+    return dados
+}

@@ -29,7 +29,7 @@ async function inserir(req, res) {
     await Pessoa.create({ 
             pessoa: req.body.pessoa,
             email: req.body.email,
-            telefone: req.body.email
+            telefone: req.body.telefone
             })
         .then(result => res.json(result))
         .catch(err => res.status(400).json(err));
@@ -39,7 +39,7 @@ async function alterar(req, res){
     await Pessoa.update({
         pessoa: req.body.pessoa,
         email: req.body.email,
-        telefone: req.body.email},
+        telefone: req.body.telefone},
         {
             where: { idpessoa: req.params.idpessoa }
         }

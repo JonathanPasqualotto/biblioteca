@@ -1,16 +1,20 @@
 import CabecalhoListagem from "../componentes/CabecalhoListagem";
 import { Button, Table } from 'react-bootstrap';
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { getCategorias } from "../servico/api";
 import { Link } from "react-router-dom";
 
 export default function Categorias(){
     const [dados, setDados] = useState([]);
 
-    useEffect(()=>{
-        axios.get('http://localhost:4000/categoria')
-            .then(resposta => setDados(resposta.data))
-            .catch(erro => console.log(erro));
+    useEffect(()=>{         // EXECUTA QUANDO ENTRA NA PAGINA
+        const carregarDados = async () => {
+            let resposta = await getCategorias()
+            console.log(resposta)
+            setDados(resposta)
+        }
+
+        carregarDados()
     }, []);
 
     return (
