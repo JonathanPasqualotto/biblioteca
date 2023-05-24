@@ -9,6 +9,12 @@ import CategoriaCad from './paginas/CategoriaCad';
 import Pessoas from './paginas/Pessoas';
 import PessoaCad from './paginas/PessoaCad';
 import Livros from './paginas/Livros';
+import LivroCad from './paginas/LivroCad';
+import Editoras from './paginas/Editoras';
+import EditoraCad from './paginas/EditoraCad';
+import Usuarios from './paginas/Usuarios';
+import UsuarioCad from './paginas/UsuarioCad';
+import LivroAutores from './paginas/LivroAutores';
 
 function App() {
   return (
@@ -33,8 +39,19 @@ function App() {
             <Route path='/pessoa' element={<PessoaCad />}/>
 
             <Route path='/livros' element={<Livros />}/>
-            {/*<Route path='/livro/:id' element={< />}/>
-            <Route path='/livro' element={< />}/> */}
+            <Route path='/livro/:id' element={<LivroCad />}/>
+            <Route path='/livro' element={<LivroCad />}/>
+
+            <Route path='/editoras' element={<Editoras />}/>
+            <Route path='/editora/:id' element={<EditoraCad />}/>
+            <Route path='/editora' element={<EditoraCad />}/>
+
+            <Route path='/usuarios' element={<Usuarios />}/>
+            <Route path='/usuario/:id' element={<UsuarioCad />}/>
+            <Route path='/usuario' element={<UsuarioCad />}/>
+            
+            <Route path='/livroautorlivro/:id' element={<LivroAutores />}/>
+            {/* <Route path='/livroautores' element={< />}/> */}
 
             <Route path='*' element={<Home />}/>
           </Routes>

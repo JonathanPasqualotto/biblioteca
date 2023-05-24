@@ -28,8 +28,8 @@ async function inserir(req, res){
     const ideditora = req.body.ideditora
 
     if (!titulo || !ano || !idcategoria || !ideditora) {
-        return res.status(400).json(
-            { mensagem: 'Parâmetros obrigatórios não fornecidos. Verifique se o parâmetro "titulo","ano","categoria" ou "editora" não foi fornecido corretamente.' });
+        return res.status(400).send(
+            alert('Parâmetros obrigatórios não fornecidos. Verifique se o parâmetro "titulo","ano","categoria" ou "editora" não foi fornecido corretamente.'));
     } else {
         if ((/^\d+$/.test(ideditora)) || (/^\d+$/.test(idcategoria)) || (/^\d+$/.test(ano)) || (/^\d+$/.test(paginas)) || (/^\+$/.test(edicao))){        
                 res.send(
@@ -44,7 +44,7 @@ async function inserir(req, res){
                         ideditora: ideditora
                     }))
         } else{
-            res.status(400).send('Parâmetro inválido: Algunas dados devem ser um número')
+            res.status(400).send(alert('Parâmetro inválido: Algunas dados devem ser um número'))
         }
     }
         

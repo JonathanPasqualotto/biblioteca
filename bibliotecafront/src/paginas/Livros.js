@@ -26,10 +26,12 @@ export default function Livros(){
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>#</th>
                         <th>Livro</th>
                         <th>Ano</th>
-                        <th>Resumo</th>
-                        <th>Emprestado</th>
+                        <th>Categoria</th>
+                        <th>Editora</th>
+                        <th>Numero Edição</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,10 +40,14 @@ export default function Livros(){
                             <td>
                                 <Button as={Link} to={`/livro/${d.idlivro}`}>Ver</Button>
                             </td>
+                            <td>
+                                <Button as={Link} to={`/livroautorlivro/${d.idlivro}`}>Autor</Button>
+                            </td>
                             <td>{d.titulo}</td>
                             <td>{d.ano}</td>
-                            <td>{d.resumo}</td>
-                            <td>{d.emprestado}</td>
+                            <td>{d.idcategoria}</td>
+                            <td>{d.ideditora}</td>
+                            <td>{d.edicao}</td>
                         </tr>
                     ))}
                     
